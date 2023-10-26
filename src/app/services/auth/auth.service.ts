@@ -85,7 +85,7 @@ export class AuthService {
   }
 
   refresh(): Observable<TokenData>{
-    return this.http.post<TokenModel>(`${this.apiLink}/login`, 
+    return this.http.post<TokenModel>(`${this.apiLink}/login/refresh`, 
       { value: this.refreshToken$.value })
       .pipe(
         tap(model => {
