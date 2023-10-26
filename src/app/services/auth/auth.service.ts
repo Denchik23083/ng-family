@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -51,14 +51,48 @@ export enum Permission {
 })
 export class AuthService {  
   apiLink = 'https://localhost:5001/api/auth';
+  tokenKey = 'jwtToken';
+  refreshTokenKey = 'refreshToken';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  tokenData$ = new BehaviorSubject<TokenData>(null as any);
+  refreshToken$ = new BehaviorSubject<string>(null as any);
+
+  constructor(private http: HttpClient, private router: Router) { 
+    const rawToken = localStorage.getItem(this.tokenKey);
+    if (rawToken) {
+      const tokenData = this.getTokenData(rawToken);
+      this.tokenData$.next(tokenData);
+    }
+
+    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    if(refreshToken){
+      this.refreshToken$.next(refreshToken);
+    }
+  }
 
   login(model: LoginModel): Observable<TokenData>{
     return this.http.post<TokenModel>(`${this.apiLink}/login`, model)
       .pipe(
         tap(model => {
-          console.log(this.getTokenData(model.jwtToken))
+          this.tokenData$.next(this.getTokenData(model.jwtToken));
+          this.refreshToken$.next(model.refreshToken);
+          localStorage.setItem(this.tokenKey, model.jwtToken);
+          localStorage.setItem(this.refreshTokenKey, model.refreshToken);
+        }),
+        map(model => this.getTokenData(model.jwtToken)),
+        tap(() => this.router.navigate(['/']))
+      )
+  }
+
+  refresh(): Observable<TokenData>{
+    return this.http.post<TokenModel>(`${this.apiLink}/login/refresh`, 
+      { value: this.refreshToken$.value })
+      .pipe(
+        tap(model => {
+          this.tokenData$.next(this.getTokenData(model.jwtToken));
+          this.refreshToken$.next(model.refreshToken);
+          localStorage.setItem(this.tokenKey, model.jwtToken);
+          localStorage.setItem(this.refreshTokenKey, model.refreshToken);
         }),
         map(model => this.getTokenData(model.jwtToken))
       )
