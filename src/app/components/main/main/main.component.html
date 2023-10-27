@@ -1,5 +1,19 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-success text-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto dont-weight-normal">Main</h5>    
-</div>
+<nav class="navbar navbar-expand-lg navbar-light p-3" style="background-color: #563d7c;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-5">
+            <strong><a class="nav-link text-light" aria-current="page" href="#">Home</a></strong>
+          </li>
+          <li class="nav-item me-5">
+            <strong><a class="nav-link text-light" href="#">Link</a></strong>
+          </li>
+        </ul>
+        <nav><strong><a class="p-2 text-white text-decoration-none" routerLink="/login">Login</a></strong></nav>
+        <nav><strong><a class="p-2 text-white text-decoration-none" routerLink="/register">Register</a></strong></nav>
+      </div>
+    </div>
+</nav>
 
 <button (click)="refresh()">refresh</button>
+
