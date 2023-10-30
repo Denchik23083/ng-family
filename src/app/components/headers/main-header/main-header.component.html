@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-light p-3 mb-3" style="background-color: #563d7c;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><strong><a class="nav-link text-light me-5" aria-current="page" href="/">Main</a></strong></li>
+          <li class="nav-item" *ngIf="hasChildPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/children">Children</a></strong></li>
+          <li class="nav-item" *ngIf="hasParentPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/parents">Parents</a></strong></li>
+          <li class="nav-item" *ngIf="hasParentPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/genus">Genus</a></strong></li>
+          <li class="nav-item" *ngIf="hasAdminPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/removeuser">RemoveUser</a></strong></li>
+          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/usertoadmin">UserToAdmin</a></strong></li>
+          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/admintouser">AdminToUser</a></strong></li>
+        </ul>
+        <nav><strong><a class="nav-link text-light" routerLink="/profile">Profile</a></strong></nav>
+      </div>
+    </div>
+</nav>

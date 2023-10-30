@@ -9,10 +9,15 @@ import { LoginPageComponent } from './pages/auth/login-page/login-page.component
 import { RegisterPageComponent } from './pages/auth/register-page/register-page.component';
 import { UserService } from './services/users/user.service';
 import { AuthService } from './services/auth/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main/main.component';
 import { MainPageComponent } from './pages/main/main-page/main-page.component';
+import { AuthHeaderComponent } from './components/headers/auth-header/auth-header.component';
+import { MainHeaderComponent } from './components/headers/main-header/main-header.component';
+import { AuthInterceptor } from './utils/auth.interceptor';
+import { RefreshInterceptor } from './utils/refresh.interceptor';
+import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { MainPageComponent } from './pages/main/main-page/main-page.component';
     LoginPageComponent,
     RegisterPageComponent,
     MainComponent,
-    MainPageComponent
+    MainPageComponent,
+    AuthHeaderComponent,
+    MainHeaderComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,9 @@ import { MainPageComponent } from './pages/main/main-page/main-page.component';
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
