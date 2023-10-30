@@ -13,8 +13,4 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  refresh(): void {
-    this.service.refresh().subscribe();
-  }
-
 }
