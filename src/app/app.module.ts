@@ -18,6 +18,7 @@ import { MainHeaderComponent } from './components/headers/main-header/main-heade
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProfilePageComponent } from './pages/user/profile-page/profile-page.com
     MainPageComponent,
     AuthHeaderComponent,
     MainHeaderComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
