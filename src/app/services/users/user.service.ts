@@ -46,7 +46,7 @@ export class UserService {
     private authService: AuthService) { }
 
   getUser(): Observable<UserModel>{
-    return this.http.get<UserModel>(this.apiLink)
+    return this.http.get<UserModel>(`${this.apiLink}/profile`)
       .pipe(
         tap(user => {
           this.user$.next(user)

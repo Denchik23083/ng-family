@@ -1,0 +1,10 @@
+.wrapper {
+    min-height: 100vh;
+    background-image: url("/assets/LA_night.jpg");
+    background-size: 100%;
+    z-index: 2;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
