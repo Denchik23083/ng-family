@@ -1,3 +1,42 @@
-<div class="p-3">
-    
+<div *ngIf="user$ | async as user" class="wrapper p-3">    
+    <div class="from_all_details">
+        <p class="text">{{user.firstName}} {{user.lastName}}</p>
+        <p class="text">{{user.birthDay}}</p>
+        <p class="text">{{user.gender.type}}</p>
+    </div>
+    <span *ngIf="this.user$.value.child else parent">
+        <div *ngFor="let item of user.child.genus.parents">
+            <div class="from_all_click">
+                <p class="text">Parent</p>
+                <p class="text">{{item.user.firstName}} {{item.user.lastName}}</p>        
+            </div>
+        </div>   
+        <div *ngFor="let item of user.child.genus.children">
+            <div class="from_all_click">
+                <p class="text">Child</p>
+                <p class="text">{{item.user.firstName}} {{item.user.lastName}}</p>
+            </div>
+        </div>   
+    </span>
+     
+    <ng-template #parent>
+        <span>
+            <div *ngFor="let item of user.parent.genus.parents">
+                <div class="from_all_click">
+                    <p class="text">Parent</p>
+                    <p class="text">{{item.user.firstName}} {{item.user.lastName}}</p>  
+                </div>
+            </div>  
+            <div *ngFor="let item of user.parent.genus.children">
+                <div class="from_all_click">
+                    <p class="text">Child</p>
+                    <p class="text">{{item.user.firstName}} {{item.user.lastName}}</p>
+                </div>
+            </div>  
+        </span>           
+    </ng-template>
+
 </div>
+
+
+

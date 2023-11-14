@@ -9,9 +9,9 @@ export interface UserModel{
   firstName: string,
   lastName: string,
   birthDay: Date,
-  gender: string,
-  parents: ParentModel[],
-  children: ChildModel[],
+  gender: GenderModel,
+  parent: ParentModel,
+  child: ChildModel,
 }
 
 export interface ChildModel{
@@ -30,6 +30,12 @@ export interface ParentModel{
 
 export interface GenusModel{
   name: string,
+  children: ChildModel[],
+  parents: ParentModel[]
+}
+
+export interface GenderModel{
+  type: string,
 }
 
 @Injectable({
@@ -46,7 +52,7 @@ export class UserService {
     private authService: AuthService) { }
 
   getUser(): Observable<UserModel>{
-    return this.http.get<UserModel>(this.apiLink)
+    return this.http.get<UserModel>(`${this.apiLink}/profile`)
       .pipe(
         tap(user => {
           this.user$.next(user)

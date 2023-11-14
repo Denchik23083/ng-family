@@ -30,7 +30,7 @@ export class RefreshInterceptor implements HttpInterceptor {
     const isTokenExpired = this.authService.tokenData$.value.expires <= new Date();
 
     if(isTokenExpired){
-      this.authService.refresh()
+      return this.authService.refresh()
         .pipe(
           mergeMap(tokenData => {
             const cloned = request.clone({
@@ -41,7 +41,7 @@ export class RefreshInterceptor implements HttpInterceptor {
             return next.handle(cloned);
           })
         );
-    }
+    } 
 
     return next.handle(request);
   }
