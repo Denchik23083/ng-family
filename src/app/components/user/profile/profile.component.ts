@@ -9,7 +9,6 @@ import { UserModel, UserService } from 'src/app/services/users/user.service';
 })
 export class ProfileComponent implements OnInit {
   user$: BehaviorSubject<UserModel>; 
-
   constructor(private service: UserService) {
     this.user$ = service.user$;
   }

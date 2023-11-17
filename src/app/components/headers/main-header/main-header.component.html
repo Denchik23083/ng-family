@@ -10,7 +10,8 @@
           <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/usertoadmin">UserToAdmin</a></strong></li>
           <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/admintouser">AdminToUser</a></strong></li>
         </ul>
-        <nav><strong><a class="nav-link text-light" routerLink="/profile">Profile</a></strong></nav>
+        <nav><strong><a class="nav-link text-light me-3" routerLink="/profile">Profile</a></strong></nav>
+        <nav><strong><a class="nav-link text-light logout" (click)="logout()">Logout</a></strong></nav>
       </div>
     </div>
 </nav>

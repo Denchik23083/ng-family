@@ -8,6 +8,11 @@
     flex-wrap: wrap;
     align-content: flex-start;
 }
+.wrapper2{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
 
 .from_all_details {
     border: 3px solid rgb(80, 200, 230);
@@ -18,7 +23,6 @@
     font-size: 20px;
     padding: 10px;
     margin: 10px;
-    min-height: 400px;
 }
 
 .from_all_click {
