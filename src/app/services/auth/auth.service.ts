@@ -38,6 +38,7 @@ export interface LoginModel {
 
 export enum Permission {
   getInfo = 'GetInfo',
+  createGenus = 'CreateGenus',
   getChild = 'GetChild',
   getParent = 'GetParent',
   crudGenus = 'CrudGenus',
