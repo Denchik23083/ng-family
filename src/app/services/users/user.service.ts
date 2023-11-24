@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ChildModel } from '../web/child.service';
+import { ParentModel } from '../web/parent.service';
 
 export interface UserModel{
   firstName: string,
@@ -12,26 +14,6 @@ export interface UserModel{
   gender: GenderModel,
   parent: ParentModel,
   child: ChildModel,
-}
-
-export interface ChildModel{
-  userId: number,
-  user: UserModel,
-  genusId: number,
-  genus: GenusModel
-}
-
-export interface ParentModel{
-  userId: number,
-  user: UserModel,
-  genusId: number,
-  genus: GenusModel
-}
-
-export interface GenusModel{
-  name: string,
-  children: ChildModel[],
-  parents: ParentModel[]
 }
 
 export interface GenderModel{
@@ -54,10 +36,7 @@ export class UserService {
   getUser(): Observable<UserModel>{
     return this.http.get<UserModel>(`${this.apiLink}/profile`)
       .pipe(
-        tap(user => {
-          this.user$.next(user)
-          console.log(this.user$.value)
-        })
+        tap(user => this.user$.next(user))
       );
   }
 
