@@ -9,7 +9,6 @@ import { ParentModel } from '../web/parent.service';
 
 export interface UserModel{
   firstName: string,
-  lastName: string,
   birthDay: Date,
   gender: GenderModel,
   parent: ParentModel,

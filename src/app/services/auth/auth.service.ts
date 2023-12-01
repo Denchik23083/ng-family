@@ -41,8 +41,9 @@ export enum Permission {
   createGenus = 'CreateGenus',
   getChild = 'GetChild',
   getParent = 'GetParent',
-  crudGenus = 'CrudGenus',
-  removeUser = 'RemoveUser',
+  getGenus = 'GetGenus',
+  updateDeleteGenus = 'UpdateDeleteGenus',
+  deleteUser = 'DeleteUser',
   userToAdmin = 'UserToAdmin',
   adminToUser = 'AdminToUser',
 }
