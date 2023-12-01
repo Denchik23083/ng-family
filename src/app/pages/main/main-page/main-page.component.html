@@ -1,8 +1,8 @@
 <span *ngIf="tokenData.value else login">
     <app-main-header 
         [childPermission]="[permission.getChild]"
-        [parentPermission]="[permission.getParent, permission.crudGenus]"
-        [adminPermission]="[permission.removeUser]" 
+        [parentPermission]="[permission.getParent, permission.getGenus]"
+        [adminPermission]="[permission.deleteUser]" 
         [godPermission]="[permission.userToAdmin, permission.adminToUser]">
     </app-main-header>
 </span>
