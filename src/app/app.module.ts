@@ -19,6 +19,15 @@ import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { ChildPageComponent } from './pages/web/child-page/child-page.component';
+import { ParentPageComponent } from './pages/web/parent-page/parent-page.component';
+import { GenusPageComponent } from './pages/web/genus-page/genus-page.component';
+import { ChildComponent } from './components/web/child/child.component';
+import { ParentComponent } from './components/web/parent/parent.component';
+import { GenusComponent } from './components/web/genus/genus.component';
+import { ChildService } from './services/web/child.service';
+import { ParentService } from './services/web/parent.service';
+import { GenusService } from './services/web/genus.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,13 @@ import { ProfileComponent } from './components/user/profile/profile.component';
     AuthHeaderComponent,
     MainHeaderComponent,
     ProfilePageComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChildPageComponent,
+    ParentPageComponent,
+    GenusPageComponent,
+    ChildComponent,
+    ParentComponent,
+    GenusComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +58,9 @@ import { ProfileComponent } from './components/user/profile/profile.component';
   providers: [
     AuthService,
     UserService,
+    ChildService,
+    ParentService,
+    GenusService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RefreshInterceptor, multi: true },
   ],
