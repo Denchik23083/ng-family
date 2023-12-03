@@ -9,6 +9,7 @@ import { UserModel, UserService } from 'src/app/services/users/user.service';
 })
 export class ProfileComponent implements OnInit {
   user$: BehaviorSubject<UserModel>; 
+  
   constructor(private service: UserService) {
     this.user$ = service.user$;
   }
@@ -17,13 +18,13 @@ export class ProfileComponent implements OnInit {
     this.service.getUser().subscribe(() => {
       if(this.user$.value.child != null)
       {
-        this.user$.value.child.genus.children = this.user$.value.child.genus.children.filter(x => x != null);
+        this.user$.value.child.genus.children = this.user$.value.child.genus.children.filter(x => x.user != null);
       }
       if(this.user$.value.parent != null)
       {
-        this.user$.value.parent.genus.parents = this.user$.value.parent.genus.parents.filter(x => x != null);
+        this.user$.value.parent.genus.parents = this.user$.value.parent.genus.parents.filter(x => x.user != null);
       }
-    });    
+    });
   }
 
 }
