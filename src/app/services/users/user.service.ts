@@ -8,6 +8,7 @@ import { ChildModel } from '../web/child.service';
 import { ParentModel } from '../web/parent.service';
 
 export interface UserModel{
+  id: number,
   firstName: string,
   birthDay: Date,
   gender: GenderModel,

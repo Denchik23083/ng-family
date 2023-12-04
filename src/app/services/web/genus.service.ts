@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 export interface GenusModel{
+  id: number,
   name: string,
   children: ChildModel[],
   parents: ParentModel[]

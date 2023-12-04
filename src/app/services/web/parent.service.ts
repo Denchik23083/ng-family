@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { GenusModel } from './genus.service';
 
 export interface ParentModel{
+  id: number,
   userId: number,
   user: UserModel,
   genusId: number,
