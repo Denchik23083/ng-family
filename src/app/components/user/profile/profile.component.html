@@ -15,7 +15,7 @@
         </div>    
         <div *ngIf="this.user$.value.child != null" class="wrapper">
             <div *ngFor="let item of user.child.genus.parents">
-                <div class="from_all_click">                
+                <div class="from_all_click" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
                     <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
                     <p class="text">Parent</p>
@@ -23,7 +23,7 @@
                 </div>
             </div>   
             <div *ngFor="let item of user.child.genus.children">
-                <div class="from_all_click">                
+                <div class="from_all_click" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
                     <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
                     <p class="text">Child</p>
@@ -50,7 +50,7 @@
             </div>
             <div *ngIf="this.user$.value.parent != null" class="wrapper">
                 <div *ngFor="let item of user.parent.genus.parents">
-                    <div class="from_all_click">                    
+                    <div class="from_all_click" *ngIf="item != null">                    
                         <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
                         <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
                         <p class="text">Parent</p>
@@ -58,7 +58,7 @@
                     </div>
                 </div>  
                 <div *ngFor="let item of user.parent.genus.children">
-                    <div class="from_all_click">                    
+                    <div class="from_all_click" *ngIf="item != null">                    
                         <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
                         <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
                         <p class="text">Child</p>
