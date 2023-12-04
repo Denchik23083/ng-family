@@ -1,4 +1,5 @@
 <div *ngIf="user$ | async as user" class="main p-3"> 
+    <a routerLink="/"><button class="back">Back</button></a>
     <div *ngIf="this.user$.value.child else parent">   
         <div class="from_all_details">
             <p class="text">{{user.firstName}} 

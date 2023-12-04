@@ -1,1 +1,28 @@
-<p>genus-id works!</p>
+<div *ngIf="genus$ | async as genus" class="main p-3">
+    <a routerLink="/genus"><button class="back">Back</button></a>
+    <div>   
+        <div class="from_all_details">
+            <span>{{genus.name}}</span>
+        </div>   
+        <div class="wrapperParent">
+            <div *ngFor="let item of genus.parents">
+                <div class="from_all_click" style="min-height: 300px;" *ngIf="item != null">                
+                    <p class="text">{{item.user.firstName}} {{genus.name}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">Parent</p>
+                    <p class="text">{{item.user.gender.type}}</p>
+                </div>
+            </div>  
+        </div> 
+        <div class="wrapperChild">
+            <div *ngFor="let item of genus.children">
+                <div class="from_all_click" *ngIf="item != null">                
+                    <p class="text">{{item.user.firstName}} {{genus.name}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">Child</p>
+                    <p class="text">{{item.user.gender.type}}</p>
+                </div>
+            </div>   
+        </div>       
+    </div>
+</div>

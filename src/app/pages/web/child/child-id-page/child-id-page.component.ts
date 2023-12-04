@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-child-id-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./child-id-page.component.scss']
 })
 export class ChildIdPageComponent implements OnInit {
+
+  public permission = Permission;
 
   constructor() { }
 
