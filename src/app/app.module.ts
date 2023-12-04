@@ -19,15 +19,21 @@ import { AuthInterceptor } from './utils/auth.interceptor';
 import { RefreshInterceptor } from './utils/refresh.interceptor';
 import { ProfilePageComponent } from './pages/user/profile-page/profile-page.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { ChildPageComponent } from './pages/web/child-page/child-page.component';
-import { ParentPageComponent } from './pages/web/parent-page/parent-page.component';
-import { GenusPageComponent } from './pages/web/genus-page/genus-page.component';
-import { ChildComponent } from './components/web/child/child.component';
-import { ParentComponent } from './components/web/parent/parent.component';
-import { GenusComponent } from './components/web/genus/genus.component';
+import { ChildPageComponent } from './pages/web/child/child-page/child-page.component';
+import { ParentPageComponent } from './pages/web/parent/parent-page/parent-page.component';
+import { GenusPageComponent } from './pages/web/genus/genus-page/genus-page.component';
+import { ChildComponent } from './components/web/child/child/child.component';
+import { ParentComponent } from './components/web/parent/parent/parent.component';
+import { GenusComponent } from './components/web/genus/genus/genus.component';
 import { ChildService } from './services/web/child.service';
 import { ParentService } from './services/web/parent.service';
 import { GenusService } from './services/web/genus.service';
+import { ChildIdComponent } from './components/web/child/child-id/child-id.component';
+import { ParentIdComponent } from './components/web/parent/parent-id/parent-id.component';
+import { GenusIdComponent } from './components/web/genus/genus-id/genus-id.component';
+import { ChildIdPageComponent } from './pages/web/child/child-id-page/child-id-page.component';
+import { ParentIdPageComponent } from './pages/web/parent/parent-id-page/parent-id-page.component';
+import { GenusIdPageComponent } from './pages/web/genus/genus-id-page/genus-id-page.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +53,13 @@ import { GenusService } from './services/web/genus.service';
     GenusPageComponent,
     ChildComponent,
     ParentComponent,
-    GenusComponent
+    GenusComponent,
+    ChildIdComponent,
+    ParentIdComponent,
+    GenusIdComponent,
+    ChildIdPageComponent,
+    ParentIdPageComponent,
+    GenusIdPageComponent,
   ],
   imports: [
     BrowserModule,
