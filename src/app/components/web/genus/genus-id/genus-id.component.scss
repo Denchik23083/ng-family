@@ -1,0 +1,57 @@
+.main {
+    min-height: 100vh;
+    background-image: url("/assets/LA_night.jpg");
+    background-size: 100%;
+    z-index: 2;
+    background-repeat: no-repeat;
+}
+.wrapperParent{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.wrapperChild{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.from_all_details {
+    border: 3px solid rgb(80, 200, 230);
+    width: 520px;
+    color: rgb(80, 200, 230);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.from_all_click {
+    border: 3px solid rgb(80, 200, 230);
+    width: 250px;
+    color: rgb(80, 200, 230);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    min-height: 200px;
+}
+
+.text{
+    color: rgb(80, 200, 230);
+}
+
+.back{
+    width: 100px;
+    height: 50px;
+    color: rgb(80, 200, 230);
+    background: none;
+    border: 3px solid rgb(80, 200, 230);
+    border-radius: 15px;
+}

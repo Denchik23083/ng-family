@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { GenusModel, GenusService } from 'src/app/services/web/genus.service';
 
 @Component({
   selector: 'app-genus-id',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenusIdComponent implements OnInit {
 
-  constructor() { }
+  genus$: BehaviorSubject<GenusModel>;
+
+  constructor(private genusService: GenusService, private activatedRoute: ActivatedRoute) {
+    this.genus$ = genusService.genus$;
+  }
 
   ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
+    this.genusService.getGenus(id).subscribe();
   }
 
 }
