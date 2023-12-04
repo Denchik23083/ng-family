@@ -1,1 +1,9 @@
-<p>genus works!</p>
+<div class="main p-3">
+    <div class="wrapper">
+        <div *ngFor="let item of (allGenus$ | async)"> 
+            <div class="from_all_click" *ngIf="item != null" (click)="details(item.id)">
+                <p class="text">{{item.name}}</p>
+            </div>
+        </div>
+    </div>    
+</div>
