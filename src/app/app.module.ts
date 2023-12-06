@@ -34,6 +34,10 @@ import { GenusIdComponent } from './components/web/genus/genus-id/genus-id.compo
 import { ChildIdPageComponent } from './pages/web/child/child-id-page/child-id-page.component';
 import { ParentIdPageComponent } from './pages/web/parent/parent-id-page/parent-id-page.component';
 import { GenusIdPageComponent } from './pages/web/genus/genus-id-page/genus-id-page.component';
+import { GenusAddComponent } from './components/web/genus/genus-add/genus-add.component';
+import { GenusUpdateComponent } from './components/web/genus/genus-update/genus-update.component';
+import { GenusAddPageComponent } from './pages/web/genus/genus-add-page/genus-add-page.component';
+import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/genus-update-page.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +64,10 @@ import { GenusIdPageComponent } from './pages/web/genus/genus-id-page/genus-id-p
     ChildIdPageComponent,
     ParentIdPageComponent,
     GenusIdPageComponent,
+    GenusAddComponent,
+    GenusUpdateComponent,
+    GenusAddPageComponent,
+    GenusUpdatePageComponent,
   ],
   imports: [
     BrowserModule,
