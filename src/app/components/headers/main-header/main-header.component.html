@@ -6,9 +6,9 @@
           <li class="nav-item" *ngIf="hasChildPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/children">Children</a></strong></li>
           <li class="nav-item" *ngIf="hasParentPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/parents">Parents</a></strong></li>
           <li class="nav-item" *ngIf="hasParentPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/genus">Genus</a></strong></li>
-          <li class="nav-item" *ngIf="hasAdminPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/deleteuser">DeleteUser</a></strong></li>
-          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/usertoadmin">UserToAdmin</a></strong></li>
-          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/admintouser">AdminToUser</a></strong></li>
+          <li class="nav-item" *ngIf="hasAdminPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/deleteuser">Delete User</a></strong></li>
+          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/usertoadmin">User To Admin</a></strong></li>
+          <li class="nav-item" *ngIf="hasGodPermission"><strong><a class="nav-link text-light me-5" aria-current="page" href="/admintouser">Admin To User</a></strong></li>
         </ul>
         <nav><strong><a class="nav-link text-light me-3" routerLink="/profile">Profile</a></strong></nav>
         <nav><strong><a class="nav-link text-light logout" (click)="logout()">Logout</a></strong></nav>
