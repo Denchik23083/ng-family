@@ -5,7 +5,7 @@
     z-index: 2;
     background-repeat: no-repeat;
 }
-.wrapper{
+.wrapper {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -37,15 +37,16 @@
     min-height: 200px;
 }
 
-.text{
+.text {
     color: rgb(80, 200, 230);
 }
 
-.back{
-    width: 100px;
+.button {
+    min-width: 100px;
     height: 50px;
     color: rgb(80, 200, 230);
     background: none;
     border: 3px solid rgb(80, 200, 230);
     border-radius: 15px;
+    margin-right: 20px;
 }

@@ -3,7 +3,7 @@
         <div *ngFor="let item of (parents$ | async)"> 
             <div class="from_all_click" *ngIf="item != null" (click)="details(item.id)">                
                 <p class="text">{{item.user.firstName}} {{item.genus.name}}</p>
-                <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                 <p class="text">{{item.user.gender.type}}</p>
             </div>
         </div>
