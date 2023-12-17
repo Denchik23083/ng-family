@@ -12,6 +12,8 @@ import { GenusPageComponent } from './pages/web/genus/genus-page/genus-page.comp
 import { ChildIdPageComponent } from './pages/web/child/child-id-page/child-id-page.component';
 import { ParentIdPageComponent } from './pages/web/parent/parent-id-page/parent-id-page.component';
 import { GenusIdPageComponent } from './pages/web/genus/genus-id-page/genus-id-page.component';
+import { GenusAddPageComponent } from './pages/web/genus/genus-add-page/genus-add-page.component';
+import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/genus-update-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full' },
@@ -58,6 +60,18 @@ const routes: Routes = [
     component: GenusIdPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getInfo] }
+  },
+  {
+    path: 'genus/add', 
+    component: GenusAddPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.createGenus] }
+  },
+  {
+    path: 'genus/:id/edit', 
+    component: GenusUpdatePageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.updateDeleteGenus] }
   },
 ];
 

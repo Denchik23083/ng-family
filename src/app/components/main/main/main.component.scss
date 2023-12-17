@@ -8,7 +8,8 @@
 
 .from_all_details {
     border: 3px solid rgb(80, 200, 230);
-    width: 520px;
+    width: 250px;
+    min-height: 300px;
     color: rgb(80, 200, 230);
     border-radius: 15px;
     text-align: center;
@@ -17,6 +18,20 @@
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.create{
+    width: 200px;
+    height: 50px;
+    color: rgb(80, 200, 230);
+    background: none;
+    border: 3px solid rgb(80, 200, 230);
+    border-radius: 15px;
+    margin-top: 150px;
+}
+
+.create:hover{
+    cursor: pointer;
 }
 
 .text {

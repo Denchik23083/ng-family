@@ -6,7 +6,7 @@
         [godPermission]="[permission.userToAdmin, permission.adminToUser]">
     </app-main-header>
 </span>
-<app-main></app-main>
+<app-main [permissions]="[permission.createGenus]"></app-main>
 
 <ng-template #login>
     <app-auth-header></app-auth-header>
