@@ -38,6 +38,16 @@ import { GenusAddComponent } from './components/web/genus/genus-add/genus-add.co
 import { GenusUpdateComponent } from './components/web/genus/genus-update/genus-update.component';
 import { GenusAddPageComponent } from './pages/web/genus/genus-add-page/genus-add-page.component';
 import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/genus-update-page.component';
+import { ChangeInfoComponent } from './components/user/change-info/change-info.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { DeleteUserComponent } from './components/user/delete-user/delete-user.component';
+import { UserToAdminComponent } from './components/user/user-to-admin/user-to-admin.component';
+import { AdminToUserComponent } from './components/user/admin-to-user/admin-to-user.component';
+import { ChangeInfoPageComponent } from './pages/user/change-info-page/change-info-page.component';
+import { ChangePasswordPageComponent } from './pages/user/change-password-page/change-password-page.component';
+import { DeleteUserPageComponent } from './pages/user/delete-user-page/delete-user-page.component';
+import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
+import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +78,16 @@ import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/ge
     GenusUpdateComponent,
     GenusAddPageComponent,
     GenusUpdatePageComponent,
+    ChangeInfoComponent,
+    ChangePasswordComponent,
+    DeleteUserComponent,
+    UserToAdminComponent,
+    AdminToUserComponent,
+    ChangeInfoPageComponent,
+    ChangePasswordPageComponent,
+    DeleteUserPageComponent,
+    UserToAdminPageComponent,
+    AdminToUserPageComponent,
   ],
   imports: [
     BrowserModule,
