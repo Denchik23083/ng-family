@@ -8,7 +8,7 @@
             <div *ngFor="let item of genus.parents">
                 <div class="from_all_click" style="min-height: 300px;" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                     <p class="text">Parent</p>
                     <p class="text">{{item.user.gender.type}}</p>
                 </div>
@@ -18,7 +18,7 @@
             <div *ngFor="let item of genus.children">
                 <div class="from_all_click" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                     <p class="text">Child</p>
                     <p class="text">{{item.user.gender.type}}</p>
                 </div>

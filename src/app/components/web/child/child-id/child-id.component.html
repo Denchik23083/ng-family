@@ -3,7 +3,7 @@
     <div>   
         <div class="from_all_details">
             <p class="text">{{child.user.firstName}} {{child.genus.name}}</p>
-            <p class="text">{{child.user.birthDay | date:'dd-MM-yyyy'}}</p>
+            <p class="text">{{child.user.birthDay | date:'dd.MM.yyyy'}}</p>
             <p class="text">Child</p>
             <p class="text">{{child.user.gender.type}}</p>
         </div>    
@@ -11,7 +11,7 @@
             <div *ngFor="let item of child.genus.parents">
                 <div class="from_all_click" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{child.genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                     <p class="text">Parent</p>
                     <p class="text">{{item.user.gender.type}}</p>
                 </div>
@@ -19,7 +19,7 @@
             <div *ngFor="let item of child.genus.children">
                 <div class="from_all_click" *ngIf="item != null">                
                     <p class="text">{{item.user.firstName}} {{child.genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd-MM-yyyy'}}</p>
+                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                     <p class="text">Child</p>
                     <p class="text">{{item.user.gender.type}}</p>
                 </div>
