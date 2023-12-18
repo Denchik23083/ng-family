@@ -40,6 +40,13 @@ export class UserService {
       );
   }
 
+  leaveGenus(): Observable<{}> {
+    return this.http.delete<{}>(`${this.apiLink}/leave`)
+      .pipe(
+        tap(() => this.logout())
+      )
+  }
+
   logout(): void {
     this.clearData();
     this.router.navigate(['/']);

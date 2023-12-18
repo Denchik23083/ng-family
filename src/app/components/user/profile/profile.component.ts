@@ -18,4 +18,8 @@ export class ProfileComponent implements OnInit {
     this.service.getUser().subscribe();
   }
 
+  leave(): void {
+    this.service.leaveGenus().subscribe();
+  }
+
 }
