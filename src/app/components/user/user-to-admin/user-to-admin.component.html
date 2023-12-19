@@ -1,1 +1,33 @@
-<p>user-to-admin works!</p>
+<div class="main p-3">
+    <a routerLink="/"><button class="button mb-2">Back</button></a>
+    <div>
+        <form #form="ngForm" (ngSubmit)="filter()">
+            <input [(ngModel)] = 'email' name='email' type="email" placeholder="Email" class="input space"/>
+            <button type='submit' class="button2 space">Filter</button>
+            <button (click)="reset()" class="button2 space">Reset</button>
+        </form>
+    </div>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr scope="col">
+                <td><strong>Name</strong></td>
+                <td><strong>Email</strong></td>
+                <td><strong>Gender</strong></td>
+                <td><strong>BirthDay</strong></td>
+                <td><strong>To Admin</strong></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of (users$ | async)" >            
+            <tr scope="row">
+                <td>{{user.firstName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.gender.type}}</td>
+                <td>{{user.birthDay | date:'dd.MM.yyyy'}}</td>
+                <td>
+                    <button (click)="userToAdmin(user.id)" class="button2">To Admin</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

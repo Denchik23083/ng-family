@@ -12,14 +12,14 @@ export class DeleteUserComponent implements OnInit {
 
   email: string = "";
 
-  users$: BehaviorSubject<UserReadNameModel[]>;
+  parentsChildrenUsers$: BehaviorSubject<UserReadNameModel[]>;
 
   constructor(private service: AdminService, private userService: UserService) {
-    this.users$ = userService.users$;
+    this.parentsChildrenUsers$ = userService.parentsChildrenUsers$;
   }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe();
+    this.userService.getParentsChildrenUsers().subscribe();
   }
 
   removeUser(id: number): void {
@@ -27,9 +27,9 @@ export class DeleteUserComponent implements OnInit {
   }
 
   filter(): void {
-    this.userService.getUsers().subscribe(() => {
-      const updatedArr = this.users$.value.filter(b => b.email.startsWith(`${this.email}`));
-      this.users$.next(updatedArr);
+    this.userService.getParentsChildrenUsers().subscribe(() => {
+      const updatedArr = this.parentsChildrenUsers$.value.filter(b => b.email.startsWith(`${this.email}`));
+      this.parentsChildrenUsers$.next(updatedArr);
     });
   }
 

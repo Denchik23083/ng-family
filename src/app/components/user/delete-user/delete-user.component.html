@@ -1,27 +1,31 @@
 <div class="main p-3">
-    <a routerLink="/"><button class="button">Back</button></a>
+    <a routerLink="/"><button class="button mb-2">Back</button></a>
     <div>
         <form #form="ngForm" (ngSubmit)="filter()">
-            <input [(ngModel)] = 'email' name='email' type="email" placeholder="email"/>
-            <button type='submit' class="ml-2 btn btn-success">Filter</button>
-            <button (click)="reset()" class="ml-2 btn btn-danger">Reset</button>
+            <input [(ngModel)] = 'email' name='email' type="email" placeholder="Email" class="input space"/>
+            <button type='submit' class="button2 space">Filter</button>
+            <button (click)="reset()" class="button2 space">Reset</button>
         </form>
     </div>
     <br />
-    <table class="table table-striped">
+    <table class="table table-bordered">
         <thead>
             <tr scope="col">
                 <td><strong>Name</strong></td>
                 <td><strong>Email</strong></td>
+                <td><strong>Gender</strong></td>
+                <td><strong>BirthDay</strong></td>
                 <td><strong>Remove</strong></td>
             </tr>
         </thead>
-        <tbody *ngFor="let user of (users$ | async)" >            
+        <tbody *ngFor="let parentsChildrenUser of (parentsChildrenUsers$ | async)" >            
             <tr scope="row">
-                <td>{{user.firstName}}</td>
-                <td>{{user.email}}</td>
+                <td>{{parentsChildrenUser.firstName}}</td>
+                <td>{{parentsChildrenUser.email}}</td>
+                <td>{{parentsChildrenUser.gender.type}}</td>
+                <td>{{parentsChildrenUser.birthDay | date:'dd.MM.yyyy'}}</td>
                 <td>
-                    <button (click)="removeUser(user.id)" class="btn btn-danger but">Remove</button>
+                    <button (click)="removeUser(parentsChildrenUser.id)" class="button2">Remove</button>
                 </td>
             </tr>
         </tbody>
