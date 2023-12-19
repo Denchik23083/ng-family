@@ -4,19 +4,25 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ChildModel } from '../web/child.service';
-import { ParentModel } from '../web/parent.service';
+import { ChildModel as ChildReadModel } from '../web/child.service';
+import { ParentModel as ParentReadModel } from '../web/parent.service';
 
-export interface UserModel{
+export interface UserReadNameModel{
+  id: number,
+  firstName: string,
+  email: string,
+}
+
+export interface UserReadModel{
   id: number,
   firstName: string,
   birthDay: Date,
-  gender: GenderModel,
-  parent: ParentModel,
-  child: ChildModel,
+  gender: GenderReadModel,
+  parent: ParentReadModel,
+  child: ChildReadModel,
 }
 
-export interface GenderModel{
+export interface GenderReadModel{
   type: string,
 }
 
@@ -27,16 +33,24 @@ export class UserService {
 
   apiLink = 'https://localhost:7001/api/user';
 
-  user$ = new BehaviorSubject<UserModel>(null as any);
+  user$ = new BehaviorSubject<UserReadModel>(null as any);
+  users$ = new BehaviorSubject<UserReadNameModel[]>([]);
 
   constructor(private http: HttpClient, 
     private router: Router,
     private authService: AuthService) { }
 
-  getUser(): Observable<UserModel>{
-    return this.http.get<UserModel>(`${this.apiLink}/profile`)
+  getUser(): Observable<UserReadModel>{
+    return this.http.get<UserReadModel>(`${this.apiLink}/profile`)
       .pipe(
         tap(user => this.user$.next(user))
+      );
+  }
+
+  getUsers(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(this.apiLink)
+      .pipe(
+        tap(users => this.users$.next(users))
       );
   }
 

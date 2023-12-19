@@ -14,6 +14,9 @@ import { ParentIdPageComponent } from './pages/web/parent/parent-id-page/parent-
 import { GenusIdPageComponent } from './pages/web/genus/genus-id-page/genus-id-page.component';
 import { GenusAddPageComponent } from './pages/web/genus/genus-add-page/genus-add-page.component';
 import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/genus-update-page.component';
+import { DeleteUserPageComponent } from './pages/user/delete-user-page/delete-user-page.component';
+import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
+import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full' },
@@ -24,6 +27,24 @@ const routes: Routes = [
     component: ProfilePageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getInfo] }
+  },
+  {
+    path: 'deleteuser', 
+    component: DeleteUserPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.deleteUser] }
+  },
+  {
+    path: 'usertoadmin', 
+    component: UserToAdminPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.userToAdmin] }
+  },
+  {
+    path: 'admintouser', 
+    component: AdminToUserPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.adminToUser] }
   },
   {
     path: 'children', 

@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserModel } from '../users/user.service';
+import { UserReadModel } from '../users/user.service';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { GenusModel } from './genus.service';
+import { GenusModel as GenusReadModel } from './genus.service';
 
 export interface ParentModel{
   id: number,
   userId: number,
-  user: UserModel,
+  user: UserReadModel,
   genusId: number,
-  genus: GenusModel
+  genus: GenusReadModel
 }
 
 @Injectable({
