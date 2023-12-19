@@ -48,6 +48,8 @@ import { ChangePasswordPageComponent } from './pages/user/change-password-page/c
 import { DeleteUserPageComponent } from './pages/user/delete-user-page/delete-user-page.component';
 import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
 import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
+import { AdminService } from './services/users/admin.service';
+import { GodService } from './services/users/god.service';
 
 @NgModule({
   declarations: [
@@ -98,6 +100,8 @@ import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-
   providers: [
     AuthService,
     UserService,
+    AdminService,
+    GodService,
     ChildService,
     ParentService,
     GenusService,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserModel, UserService } from 'src/app/services/users/user.service';
+import { UserReadModel, UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +8,7 @@ import { UserModel, UserService } from 'src/app/services/users/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user$: BehaviorSubject<UserModel>; 
+  user$: BehaviorSubject<UserReadModel>; 
   
   constructor(private service: UserService) {
     this.user$ = service.user$;
