@@ -10,7 +10,9 @@ import { ParentModel as ParentReadModel } from '../web/parent.service';
 export interface UserReadNameModel{
   id: number,
   firstName: string,
+  birthDay: Date,
   email: string,
+  gender: GenderReadModel,
 }
 
 export interface UserReadModel{
@@ -30,10 +32,10 @@ export interface GenderReadModel{
   providedIn: 'root'
 })
 export class UserService {
-
   apiLink = 'https://localhost:7001/api/user';
 
   user$ = new BehaviorSubject<UserReadModel>(null as any);
+  parentsChildrenUsers$ = new BehaviorSubject<UserReadNameModel[]>([]);
   users$ = new BehaviorSubject<UserReadNameModel[]>([]);
 
   constructor(private http: HttpClient, 
@@ -44,6 +46,13 @@ export class UserService {
     return this.http.get<UserReadModel>(`${this.apiLink}/profile`)
       .pipe(
         tap(user => this.user$.next(user))
+      );
+  }
+
+  getParentsChildrenUsers(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(`${this.apiLink}/all`)
+      .pipe(
+        tap(parentsChildrenUsers => this.parentsChildrenUsers$.next(parentsChildrenUsers))
       );
   }
 

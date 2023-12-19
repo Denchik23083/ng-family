@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-admin-to-user-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-to-user-page.component.scss']
 })
 export class AdminToUserPageComponent implements OnInit {
+
+  public permission = Permission;
 
   constructor() { }
 
