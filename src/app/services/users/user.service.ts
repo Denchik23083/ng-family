@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService, GenderReadModel } from '../auth/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { ChildModel as ChildReadModel } from '../web/child.service';
-import { ParentModel as ParentReadModel } from '../web/parent.service';
+import { ChildReadModel } from '../web/child.service';
+import { ParentReadModel } from '../web/parent.service';
 
 export interface UserReadNameModel{
   id: number,
@@ -19,13 +19,17 @@ export interface UserReadModel{
   id: number,
   firstName: string,
   birthDay: Date,
+  email: string,
   gender: GenderReadModel,
   parent: ParentReadModel,
   child: ChildReadModel,
 }
 
-export interface GenderReadModel{
-  type: string,
+export interface UserWriteModel{
+  firstName: string,
+  birthDay: Date,
+  email: string,
+  genderId: number,
 }
 
 @Injectable({

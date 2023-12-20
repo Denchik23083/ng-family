@@ -17,6 +17,8 @@ import { GenusUpdatePageComponent } from './pages/web/genus/genus-update-page/ge
 import { DeleteUserPageComponent } from './pages/user/delete-user-page/delete-user-page.component';
 import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-to-admin-page.component';
 import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
+import { ChangeInfoPageComponent } from './pages/user/change-info-page/change-info-page.component';
+import { ChangePasswordPageComponent } from './pages/user/change-password-page/change-password-page.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent, pathMatch: 'full' },
@@ -25,6 +27,18 @@ const routes: Routes = [
   {
     path: 'profile', 
     component: ProfilePageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.getInfo] }
+  },
+  {
+    path: 'profile/edit', 
+    component: ChangeInfoPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.getInfo] }
+  },
+  {
+    path: 'profile/password', 
+    component: ChangePasswordPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getInfo] }
   },

@@ -1,11 +1,11 @@
 <div class="wrapper">
     <div class="wrapperForm">
         <form #form="ngForm" (ngSubmit)="submit(form)">
-            <input [(ngModel)] = 'login.email' name='email' type="email" placeholder="email" class="form-control"/><br />
-            <input [(ngModel)] = 'login.password' type='password' name='password' placeholder="password" class="form-control"/><br />
-            <button type='submit' class="form-control btn btn-success but">Login</button>
+            <input [(ngModel)] = 'login.email' name='email' type="email" placeholder="Email" class="form-control input"/><br />
+            <input [(ngModel)] = 'login.password' type='password' name='password' placeholder="Password" class="form-control input"/><br />
+            <button type='submit' class="form-control button">Login</button><br />
         </form>
-        <div class="button">First time here? <a routerLink="/register">Create an account</a></div>
+        <div>First time here? <a routerLink="/register">Create an account</a></div>
    </div>
 </div>
 

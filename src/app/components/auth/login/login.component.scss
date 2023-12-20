@@ -19,3 +19,34 @@
     font-size: 20px;
     padding: 30px;
 }
+
+.input{
+    background: none;
+    border-color: rgb(80, 200, 230);
+}
+
+.input::placeholder{
+    color: rgb(80, 200, 230);
+}
+
+.input:focus{
+    background: none;
+    border: rgb(80, 200, 230);;
+}
+
+.input::content{
+    background: none;
+    border-color: rgb(80, 200, 230);
+    color: rgb(80, 200, 230);
+}
+
+.button{
+    color: rgb(80, 200, 230);
+    background: none;
+    border: 3px solid rgb(80, 200, 230);
+    border-radius: 15px;
+}
+
+a{
+    color: rgb(80, 200, 230);
+}

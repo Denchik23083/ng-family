@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { UserReadModel } from '../users/user.service';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { GenusModel as GenusReadModel } from './genus.service';
+import { GenusReadModel } from './genus.service';
 
-export interface ParentModel{
+export interface ParentReadModel{
   id: number,
   userId: number,
   user: UserReadModel,
@@ -21,21 +21,21 @@ export class ParentService {
 
   apiLink = 'https://localhost:6001/api/parent';
 
-  parents$ = new BehaviorSubject<ParentModel[]>([]);
-  parent$ = new BehaviorSubject<ParentModel>(null as any);
+  parents$ = new BehaviorSubject<ParentReadModel[]>([]);
+  parent$ = new BehaviorSubject<ParentReadModel>(null as any);
 
   constructor(private http: HttpClient, 
     private router: Router) { }
 
-  getAllParents(): Observable<ParentModel[]>{
-    return this.http.get<ParentModel[]>(this.apiLink)
+  getAllParents(): Observable<ParentReadModel[]>{
+    return this.http.get<ParentReadModel[]>(this.apiLink)
       .pipe(
         tap(parents => this.parents$.next(parents))
       );
   }
 
-  getParent(id: number): Observable<ParentModel>{
-    return this.http.get<ParentModel>(`${this.apiLink}/id?id=${id}`)
+  getParent(id: number): Observable<ParentReadModel>{
+    return this.http.get<ParentReadModel>(`${this.apiLink}/id?id=${id}`)
       .pipe(
         tap(parent => this.parent$.next(parent))
       );

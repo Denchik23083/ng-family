@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-change-info-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./change-info-page.component.scss']
 })
 export class ChangeInfoPageComponent implements OnInit {
+
+  public permission = Permission;
 
   constructor() { }
 

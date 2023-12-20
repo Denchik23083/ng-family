@@ -18,7 +18,7 @@ export interface TokenData {
   rawToken: string, 
 }
 
-export interface GenderModel {
+export interface GenderReadModel {
   id: number,
   type: string 
 }
@@ -71,6 +71,8 @@ export class AuthService {
       this.refreshToken$.next(refreshToken);
     }
   }
+
+  //getGenders(): Observable
 
   login(model: LoginModel): Observable<TokenData>{
     return this.http.post<TokenModel>(`${this.apiLink}/login`, model)
