@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ChildModel, ChildService } from 'src/app/services/web/child.service';
+import { ChildReadModel, ChildService } from 'src/app/services/web/child.service';
 
 @Component({
   selector: 'app-child',
@@ -10,7 +10,7 @@ import { ChildModel, ChildService } from 'src/app/services/web/child.service';
 })
 export class ChildComponent implements OnInit {
 
-  children$!: BehaviorSubject<ChildModel[]>;
+  children$!: BehaviorSubject<ChildReadModel[]>;
 
   constructor(private childService: ChildService, private router: Router) {
     this.children$ = childService.children$;

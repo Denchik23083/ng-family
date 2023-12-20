@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ParentModel, ParentService } from 'src/app/services/web/parent.service';
+import { ParentReadModel, ParentService } from 'src/app/services/web/parent.service';
 
 @Component({
   selector: 'app-parent-id',
@@ -10,7 +10,7 @@ import { ParentModel, ParentService } from 'src/app/services/web/parent.service'
 })
 export class ParentIdComponent implements OnInit {
 
-  parent$: BehaviorSubject<ParentModel>;
+  parent$: BehaviorSubject<ParentReadModel>;
 
   constructor(private parentService: ParentService, private activatedRoute: ActivatedRoute) {
     this.parent$ = parentService.parent$;

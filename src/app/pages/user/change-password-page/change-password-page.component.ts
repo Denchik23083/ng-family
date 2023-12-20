@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permission } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-change-password-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./change-password-page.component.scss']
 })
 export class ChangePasswordPageComponent implements OnInit {
+
+  public permission = Permission;
 
   constructor() { }
 

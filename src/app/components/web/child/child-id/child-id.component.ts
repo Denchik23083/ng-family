@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ChildModel, ChildService } from 'src/app/services/web/child.service';
+import { ChildReadModel, ChildService } from 'src/app/services/web/child.service';
 
 @Component({
   selector: 'app-child-id',
@@ -10,7 +10,7 @@ import { ChildModel, ChildService } from 'src/app/services/web/child.service';
 })
 export class ChildIdComponent implements OnInit {
 
-  child$: BehaviorSubject<ChildModel>;
+  child$: BehaviorSubject<ChildReadModel>;
 
   constructor(private childService: ChildService, private activatedRoute: ActivatedRoute) {
     this.child$ = childService.child$;

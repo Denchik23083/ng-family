@@ -1,1 +1,14 @@
-<p>change-info works!</p>
+<div class="main p-3">
+    <a routerLink="/profile"><button class="button mb-2">Back</button></a>
+    <div>
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <input [(ngModel)] = 'user.firstName' name='firstName' placeholder="FirstName" class="form-control input"/><br />
+            <input [(ngModel)] = 'user.email' name='email' type="email" placeholder="Email" class="form-control input"/><br />
+            <input [(ngModel)] = 'user.birthDay' name='birthDay' type="datetime-local" placeholder="BirthDay" class="form-control input"/><br />
+            <select [(ngModel)] = 'user.genderId' name="genderId" class="form-control input">
+                <option *ngFor="let gender of genders" [ngValue]="gender.id">{{ gender.type }}</option>
+            </select><br />
+            <button type='submit' class="form-control button2">Update</button><br />
+        </form>
+    </div>
+</div>

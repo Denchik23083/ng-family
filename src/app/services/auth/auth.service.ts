@@ -18,7 +18,7 @@ export interface TokenData {
   rawToken: string, 
 }
 
-export interface GenderModel {
+export interface GenderReadModel {
   id: number,
   type: string 
 }
@@ -58,6 +58,7 @@ export class AuthService {
 
   tokenData$ = new BehaviorSubject<TokenData>(null as any);
   refreshToken$ = new BehaviorSubject<string>(null as any);
+  genders$ = new BehaviorSubject<GenderReadModel[]>([]);
 
   constructor(private http: HttpClient, private router: Router) { 
     const rawToken = localStorage.getItem(this.tokenKey);
@@ -70,6 +71,13 @@ export class AuthService {
     if(refreshToken){
       this.refreshToken$.next(refreshToken);
     }
+  }
+
+  getGenders(): Observable<GenderReadModel[]>{
+    return this.http.get<GenderReadModel[]>(`${this.apiLink}/register/gender`)
+      .pipe(
+        tap(genders => this.genders$.next(genders))
+      )
   }
 
   login(model: LoginModel): Observable<TokenData>{

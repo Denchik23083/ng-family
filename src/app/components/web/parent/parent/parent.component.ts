@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ParentModel, ParentService } from 'src/app/services/web/parent.service';
+import { ParentReadModel, ParentService } from 'src/app/services/web/parent.service';
 
 @Component({
   selector: 'app-parent',
@@ -10,7 +10,7 @@ import { ParentModel, ParentService } from 'src/app/services/web/parent.service'
 })
 export class ParentComponent implements OnInit {
 
-  parents$!: BehaviorSubject<ParentModel[]>;
+  parents$!: BehaviorSubject<ParentReadModel[]>;
 
   constructor(private parentService: ParentService, private router: Router) {
     this.parents$ = parentService.parents$;

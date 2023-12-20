@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GenderReadModel, UserService } from './user.service';
+import { UserService } from './user.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { GenderReadModel } from '../auth/auth.service';
 
 export interface AdminReadNameModel{
   id: number,
