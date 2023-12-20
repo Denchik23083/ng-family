@@ -67,6 +67,13 @@ export class UserService {
       );
   }
 
+  updateUser(model: UserWriteModel): Observable<{}> {
+    return this.http.put<{}>(this.apiLink, model)
+    .pipe(
+      tap(() => this.logout())
+    )
+  }
+
   leaveGenus(): Observable<{}> {
     return this.http.delete<{}>(`${this.apiLink}/leave`)
       .pipe(

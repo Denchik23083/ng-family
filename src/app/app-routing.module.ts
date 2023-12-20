@@ -31,7 +31,7 @@ const routes: Routes = [
     data: { permissions: [Permission.getInfo] }
   },
   {
-    path: 'profile/edit', 
+    path: 'profile/update', 
     component: ChangeInfoPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.getInfo] }

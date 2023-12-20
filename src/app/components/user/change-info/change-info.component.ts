@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService, GenderReadModel } from 'src/app/services/auth/auth.service';
 import { UserWriteModel, UserService } from 'src/app/services/users/user.service';
 
 @Component({
@@ -14,8 +15,10 @@ export class ChangeInfoComponent implements OnInit {
     birthDay: new Date(),
     genderId: 0
   }
+
+  genders: GenderReadModel[] = [];
   
-  constructor(private service: UserService) { }
+  constructor(private service: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.service.getUser().subscribe(user => {
@@ -24,12 +27,15 @@ export class ChangeInfoComponent implements OnInit {
       this.user.birthDay = user.birthDay;
       this.user.genderId = user.gender.id;
     });
+
+    this.authService.getGenders()
+      .subscribe(genders => this.genders = genders); 
   }
 
   submit(form: NgForm): void {
-    const editUser = form.value as UserWriteModel;
+    const updateUser = form.value as UserWriteModel;
     
-    //this.service.edit(editUser).subscribe();
+    this.service.updateUser(updateUser).subscribe();
   }
 
 }
