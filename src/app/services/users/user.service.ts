@@ -32,6 +32,12 @@ export interface UserWriteModel{
   genderId: number,
 }
 
+export interface PasswordWriteModel{
+  oldPassword: string,
+  newPassword: string,
+  confirmPassword: string,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -69,6 +75,13 @@ export class UserService {
 
   updateUser(model: UserWriteModel): Observable<{}> {
     return this.http.put<{}>(this.apiLink, model)
+    .pipe(
+      tap(() => this.logout())
+    )
+  }
+
+  updatePassword(model: PasswordWriteModel): Observable<{}> {
+    return this.http.put<{}>(`${this.apiLink}/password`, model)
     .pipe(
       tap(() => this.logout())
     )
