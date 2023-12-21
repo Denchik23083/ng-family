@@ -23,15 +23,16 @@ export interface GenderReadModel {
   type: string 
 }
 
-export interface RegisterModel {
-  name: string,
-  email: string,
-  genderId: number,
+export interface RegisterWriteModel {
+  firstName: string,
+  birthDay: Date,
+  email: string, 
   password: string,
   confirmPassword: string,
+  genderId: number,
 }
 
-export interface LoginModel {
+export interface LoginWriteModel {
   email: string,
   password: string,
 }
@@ -80,7 +81,14 @@ export class AuthService {
       )
   }
 
-  login(model: LoginModel): Observable<TokenData>{
+  register(model: RegisterWriteModel){
+    return this.http.post<RegisterWriteModel>(`${this.apiLink}/register`, model)
+      .pipe(
+        tap(() => this.router.navigate(['/login']))
+      );
+  }
+
+  login(model: LoginWriteModel): Observable<TokenData>{
     return this.http.post<TokenModel>(`${this.apiLink}/login`, model)
       .pipe(
         tap(model => {

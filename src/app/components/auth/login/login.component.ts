@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService, LoginModel } from 'src/app/services/auth/auth.service';
+import { AuthService, LoginWriteModel } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { AuthService, LoginModel } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  login: LoginModel = {
+  login: LoginWriteModel = {
     email: '',
     password: '',
   };
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    const loginUser = form.value as LoginModel;
+    const loginUser = form.value as LoginWriteModel;
     
     this.service.login(loginUser).subscribe();
   }
