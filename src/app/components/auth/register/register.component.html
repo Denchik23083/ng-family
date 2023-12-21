@@ -1,1 +1,16 @@
-<p>register works!</p>
+<div class="wrapper">
+    <div class="wrapperForm">
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <input [(ngModel)] = 'register.firstName' name='firstName' placeholder="FirstName" class="form-control input"/><br />
+            <input [(ngModel)] = 'register.email' name='email' type="email" placeholder="Email" class="form-control input"/><br />
+            <input [(ngModel)] = 'register.birthDay' name='birthDay' type="datetime-local" placeholder="BirthDay" class="form-control input"/><br />
+            <select [(ngModel)] = 'register.genderId' name="genderId" class="form-control input">
+                <option *ngFor="let gender of genders" [ngValue]="gender.id">{{ gender.type }}</option>
+            </select><br />
+            <input [(ngModel)] = 'register.password' type='password' name='password' placeholder="Password" class="form-control input"/><br />
+            <input [(ngModel)] = 'register.confirmPassword' type='password' name='confirmPassword' placeholder="ConfirmPassword" class="form-control input"/><br />
+            <button type='submit' class="form-control button">Register</button><br />
+        </form>
+        <div>Already have an account? <a routerLink="/login">Sign in account</a></div>
+   </div>
+</div>
