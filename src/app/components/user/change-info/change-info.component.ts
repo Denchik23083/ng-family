@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService, GenderReadModel } from 'src/app/services/auth/auth.service';
-import { UserWriteModel, UserService } from 'src/app/services/users/user.service';
+import { UserWriteNameModel, UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-change-info',
@@ -9,7 +9,7 @@ import { UserWriteModel, UserService } from 'src/app/services/users/user.service
   styleUrls: ['./change-info.component.scss']
 })
 export class ChangeInfoComponent implements OnInit {
-  user: UserWriteModel = {
+  user: UserWriteNameModel = {
     firstName: '',
     email: '',
     birthDay: new Date(),
@@ -33,7 +33,7 @@ export class ChangeInfoComponent implements OnInit {
   }
 
   submit(form: NgForm): void {
-    const updateUser = form.value as UserWriteModel;
+    const updateUser = form.value as UserWriteNameModel;
     
     this.service.updateUser(updateUser).subscribe();
   }

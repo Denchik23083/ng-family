@@ -35,7 +35,7 @@ export class ParentService {
   }
 
   getParent(id: number): Observable<ParentReadModel>{
-    return this.http.get<ParentReadModel>(`${this.apiLink}/id?id=${id}`)
+    return this.http.get<ParentReadModel>(`${this.apiLink}/${id}`)
       .pipe(
         tap(parent => this.parent$.next(parent))
       );

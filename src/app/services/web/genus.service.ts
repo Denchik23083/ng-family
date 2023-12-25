@@ -34,7 +34,7 @@ export class GenusService {
   }
 
   getGenus(id: number): Observable<GenusReadModel>{
-    return this.http.get<GenusReadModel>(`${this.apiLink}/id?id=${id}`)
+    return this.http.get<GenusReadModel>(`${this.apiLink}/${id}`)
       .pipe(
         tap(genus => this.genus$.next(genus))
       );

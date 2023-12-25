@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { UserReadNameModel, UserService } from 'src/app/services/users/user.service';
 import { GenusReadModel, GenusService } from 'src/app/services/web/genus.service';
 
 @Component({
@@ -12,13 +13,33 @@ export class GenusIdComponent implements OnInit {
 
   genus$: BehaviorSubject<GenusReadModel>;
 
-  constructor(private genusService: GenusService, private activatedRoute: ActivatedRoute) {
+  IsShowMaleAdults = false;
+  IsShowFemaleAdults = false;
+  IsShowYouths = false;
+  
+  maleAdults: UserReadNameModel[] = [];
+  femaleAdults: UserReadNameModel[] = [];
+  youths: UserReadNameModel[] = [];
+
+  constructor(private genusService: GenusService, private userService: UserService, private activatedRoute: ActivatedRoute) {
     this.genus$ = genusService.genus$;
   }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
     this.genusService.getGenus(id).subscribe();
+  }
+
+  showMaleAdults(): void {
+    this.userService.getMaleAdults().subscribe(maleAdults => this.maleAdults = maleAdults);
+  }
+
+  showFemaleAdults(): void {
+    this.userService.getFemaleAdults().subscribe(femaleAdults => this.femaleAdults = femaleAdults);
+  }
+
+  showYouths(): void {
+    this.userService.getYouths().subscribe(youths => this.youths = youths);
   }
 
 }

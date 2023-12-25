@@ -34,7 +34,7 @@ export class AdminService {
   removeUser(id: number): Observable<{}> {
     const removeUser = this.userService.parentsChildrenUsers$.value.filter(b => b.id !== id);
     
-    return this.http.delete<{}>(`${this.apiLink}/deleteuser/id?id=${id}`)
+    return this.http.delete<{}>(`${this.apiLink}/deleteuser/${id}`)
       .pipe(
         tap(() => this.userService.parentsChildrenUsers$.next(removeUser))
       );
