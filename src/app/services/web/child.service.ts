@@ -35,7 +35,7 @@ export class ChildService {
   }
 
   getChild(id: number): Observable<ChildReadModel>{
-    return this.http.get<ChildReadModel>(`${this.apiLink}/id?id=${id}`)
+    return this.http.get<ChildReadModel>(`${this.apiLink}/${id}`)
       .pipe(
         tap(child => this.child$.next(child))
       );

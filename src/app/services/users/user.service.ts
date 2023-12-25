@@ -26,6 +26,14 @@ export interface UserReadModel{
 }
 
 export interface UserWriteModel{
+  id: number,
+  firstName: string,
+  birthDay: Date,
+  email: string,
+  gender: GenderReadModel
+}
+
+export interface UserWriteNameModel{
   firstName: string,
   birthDay: Date,
   email: string,
@@ -52,6 +60,13 @@ export class UserService {
     private router: Router,
     private authService: AuthService) { }
 
+  getUsers(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(this.apiLink)
+      .pipe(
+        tap(users => this.users$.next(users))
+      );
+  }
+
   getUser(): Observable<UserReadModel>{
     return this.http.get<UserReadModel>(`${this.apiLink}/profile`)
       .pipe(
@@ -66,14 +81,19 @@ export class UserService {
       );
   }
 
-  getUsers(): Observable<UserReadNameModel[]>{
-    return this.http.get<UserReadNameModel[]>(this.apiLink)
-      .pipe(
-        tap(users => this.users$.next(users))
-      );
+  getMaleAdults(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(`${this.apiLink}/maleadults`);
   }
 
-  updateUser(model: UserWriteModel): Observable<{}> {
+  getFemaleAdults(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(`${this.apiLink}/femaleadults`);
+  }
+
+  getYouths(): Observable<UserReadNameModel[]>{
+    return this.http.get<UserReadNameModel[]>(`${this.apiLink}/youths`);
+  }
+
+  updateUser(model: UserWriteNameModel): Observable<{}> {
     return this.http.put<{}>(this.apiLink, model)
     .pipe(
       tap(() => this.logout())
