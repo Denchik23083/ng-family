@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, GenderReadModel } from '../auth/auth.service';
+import { AuthService, GenderReadModel, GenderWriteModel } from '../auth/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ChildReadModel } from '../web/child.service';
@@ -30,7 +30,7 @@ export interface UserWriteModel{
   firstName: string,
   birthDay: Date,
   email: string,
-  gender: GenderReadModel
+  gender: GenderWriteModel
 }
 
 export interface UserWriteNameModel{

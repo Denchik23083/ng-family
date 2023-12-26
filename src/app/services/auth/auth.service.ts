@@ -23,6 +23,11 @@ export interface GenderReadModel {
   type: string 
 }
 
+export interface GenderWriteModel {
+  id: number,
+  type: string 
+}
+
 export interface RegisterWriteModel {
   firstName: string,
   birthDay: Date,

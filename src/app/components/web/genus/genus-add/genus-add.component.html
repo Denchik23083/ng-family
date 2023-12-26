@@ -1,0 +1,25 @@
+<div class="main p-3">
+    <a routerLink="/"><button class="button mb-2">Back</button></a>
+    <div>
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <input [(ngModel)] = 'genus.name' name='name' placeholder="Name" class="form-control input"/><br />
+            <select [(ngModel)] = 'male' name="male" class="form-control input">
+                <option *ngFor="let male of maleAdults" [ngValue]="male">{{ male.firstName }}</option>
+            </select><br />
+            <select [(ngModel)] = 'female' name="female" class="form-control input">
+                <option *ngFor="let female of femaleAdults" [ngValue]="female">{{ female.firstName }}</option>
+            </select><br />
+            <div class="form-control input">
+                <div *ngFor="let selectedYouth of selectedYouths">
+                    <span>{{selectedYouth.firstName}}</span><span class="smile" (click)="deleteChild(selectedYouth)">&#10134;</span>
+                </div>
+            </div><br />
+            <div class="form-control input">
+                <div *ngFor="let youth of youths">
+                    <span>{{youth.firstName}}</span><span class="smile" (click)="addChild(youth)">&#10133;</span>
+                </div>
+            </div><br />            
+            <button type='submit' class="form-control button2">Create</button><br />
+        </form>
+    </div>
+</div>

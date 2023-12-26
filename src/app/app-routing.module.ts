@@ -91,17 +91,17 @@ const routes: Routes = [
     data: { permissions: [Permission.getInfo] }
   },
   {
-    path: 'genus/:id', 
-    component: GenusIdPageComponent,
-    canActivate: [PermissionGuard],
-    data: { permissions: [Permission.getInfo] }
-  },
-  {
     path: 'genus/add', 
     component: GenusAddPageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.createGenus] }
   },
+  {
+    path: 'genus/:id', 
+    component: GenusIdPageComponent,
+    canActivate: [PermissionGuard],
+    data: { permissions: [Permission.getInfo] }
+  },  
   {
     path: 'genus/:id/edit', 
     component: GenusUpdatePageComponent,
