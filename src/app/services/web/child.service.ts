@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserReadModel } from '../users/user.service';
+import { UserReadModel, UserWriteModel } from '../users/user.service';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { GenusReadModel } from './genus.service';
@@ -12,6 +12,11 @@ export interface ChildReadModel{
   user: UserReadModel,
   genusId: number,
   genus: GenusReadModel
+}
+
+export interface ChildWriteModel{
+  id: number,
+  userId: number
 }
 
 @Injectable({
