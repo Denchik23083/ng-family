@@ -1,1 +1,9 @@
-<p>genus-update works!</p>
+<div class="main p-3">
+    <a [routerLink]="['/genus', this.id]"><button class="button mb-2">Back</button></a>
+    <div>
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <input [(ngModel)] = 'genus.name' name='name' placeholder="Name" class="form-control input"/><br />
+            <button type='submit' class="form-control button2">Update</button><br />
+        </form>
+    </div>
+</div>

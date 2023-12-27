@@ -21,13 +21,13 @@ export class GenusIdComponent implements OnInit {
   femaleAdults: UserReadNameModel[] = [];
   youths: UserReadNameModel[] = [];
 
-  constructor(private genusService: GenusService, private userService: UserService, private activatedRoute: ActivatedRoute) {
-    this.genus$ = genusService.genus$;
+  constructor(private service: GenusService, private userService: UserService, private activatedRoute: ActivatedRoute) {
+    this.genus$ = service.genus$;
   }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
-    this.genusService.getGenus(id).subscribe();
+    this.service.getGenus(id).subscribe();
   }
 
   showMaleAdults(): void {
@@ -40,6 +40,10 @@ export class GenusIdComponent implements OnInit {
 
   showYouths(): void {
     this.userService.getYouths().subscribe(youths => this.youths = youths);
+  }
+
+  deleteGenus(id: number) {
+    this.service.deleteGenus(id).subscribe();
   }
 
 }
