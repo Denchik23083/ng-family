@@ -69,7 +69,7 @@ export class GenusService {
     }
     const updateArr = this.allGenus$.value.map(g => g.id === id ? genus : g);
 
-    return this.http.delete<{}>(`${this.apiLink}/${id}`)
+    return this.http.put<{}>(`${this.apiLink}/${id}`, model)
       .pipe(
         tap(() => {
           this.allGenus$.next(updateArr);
