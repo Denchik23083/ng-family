@@ -103,7 +103,7 @@ const routes: Routes = [
     data: { permissions: [Permission.getInfo] }
   },  
   {
-    path: 'genus/:id/edit', 
+    path: 'genus/:id/update', 
     component: GenusUpdatePageComponent,
     canActivate: [PermissionGuard],
     data: { permissions: [Permission.updateDeleteGenus] }

@@ -1,5 +1,7 @@
 <div *ngIf="genus$ | async as genus" class="main p-3">
-    <a routerLink="/genus"><button class="back">Back</button></a>
+    <a routerLink="/genus"><button class="button">Back</button></a>
+    <a [routerLink]="['/genus', genus.id, 'update']"><button class="button">Update</button></a>
+    <button class="button" (click)="deleteGenus(genus.id)">Delete</button>
     <div>   
         <div class="from_all_details">
             <span>{{genus.name}}</span>

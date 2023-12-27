@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { GenusReadModel, GenusService } from 'src/app/services/web/genus.service';
+import { GenusReadNameModel, GenusService } from 'src/app/services/web/genus.service';
 
 @Component({
   selector: 'app-genus',
@@ -10,7 +10,7 @@ import { GenusReadModel, GenusService } from 'src/app/services/web/genus.service
 })
 export class GenusComponent implements OnInit {
 
-  allGenus$!: BehaviorSubject<GenusReadModel[]>;
+  allGenus$!: BehaviorSubject<GenusReadNameModel[]>;
 
   constructor(private genusService: GenusService, private router: Router) {
     this.allGenus$ = genusService.allGenus$;
