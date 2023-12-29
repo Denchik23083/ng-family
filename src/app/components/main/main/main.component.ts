@@ -1,21 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { UserReadModel, UserService } from 'src/app/services/users/user.service';
+import { AuthService, Permission } from 'src/app/services/auth/auth.service';
+import { CheckPermission } from 'src/app/utils/check-permission';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
-  
-  user$: BehaviorSubject<UserReadModel>;
+export class MainComponent extends CheckPermission implements OnInit {
+  @Input()
+  permissions?: Permission[];
+  hasPermissions = false;
 
-  constructor(private service: UserService) {
-    this.user$ = service.user$;
+  constructor(private service: AuthService) {
+    super(service);
   }
 
   ngOnInit(): void {
+    this.hasPermissions = super.checkPermission(this.permissions);
   }
 
 }

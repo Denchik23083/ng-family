@@ -11,12 +11,12 @@
             </select><br />
             <div class="form-control input">
                 <div *ngFor="let selectedYouth of selectedYouths">
-                    <span>{{selectedYouth.firstName}}</span><span class="smile" (click)="deleteChild(selectedYouth)">&#10134;</span>
+                    <span>{{selectedYouth.firstName}}</span><span class="smile" (click)="deleteChild(selectedYouth)">-</span>
                 </div>
             </div><br />
             <div class="form-control input">
                 <div *ngFor="let youth of youths">
-                    <span>{{youth.firstName}}</span><span class="smile" (click)="addChild(youth)">&#10133;</span>
+                    <span>{{youth.firstName}}</span><span class="smile" (click)="addChild(youth)">+</span>
                 </div>
             </div><br />            
             <button type='submit' class="form-control button2">Create</button><br />
