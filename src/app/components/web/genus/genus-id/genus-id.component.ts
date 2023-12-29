@@ -23,27 +23,22 @@ export class GenusIdComponent extends CheckPermission implements OnInit {
   
   user$: BehaviorSubject<UserReadModel>; 
   genus$: BehaviorSubject<GenusReadModel>;
-
-  IsShowMaleAdults = false;
-  IsShowFemaleAdults = false;
-  IsShowYouths = false;
   
   maleAdults: UserReadNameModel[] = [];
   femaleAdults: UserReadNameModel[] = [];
-  youths: UserReadNameModel[] = [];
-
+  
   constructor(private service: GenusService, private userService: UserService, authService: AuthService, private activatedRoute: ActivatedRoute) {
     super(authService);
-    this.user$ = userService.user$;
     this.genus$ = service.genus$;
+    this.user$ = userService.user$;    
   }
 
   ngOnInit(): void {
     this.hasAdminPermission = super.checkPermission(this.adminPermission);
-    this.hasGodPermission = super.checkPermission(this.godPermission);
-    this.userService.getUser().subscribe();
+    this.hasGodPermission = super.checkPermission(this.godPermission);    
     const id = this.activatedRoute.snapshot.paramMap.get('id') as any;
     this.service.getGenus(id).subscribe();
+    this.userService.getUser().subscribe();
   }
 
   showMaleAdults(): void {
@@ -52,10 +47,6 @@ export class GenusIdComponent extends CheckPermission implements OnInit {
 
   showFemaleAdults(): void {
     this.userService.getFemaleAdults().subscribe(femaleAdults => this.femaleAdults = femaleAdults);
-  }
-
-  showYouths(): void {
-    this.userService.getYouths().subscribe(youths => this.youths = youths);
   }
 
   deleteGenus(id: number) {

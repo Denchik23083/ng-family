@@ -1,10 +1,10 @@
 <div *ngIf="user$ | async as user" class="main p-3"> 
-    <div class="wrapper">
+    <span class="mb-2">
         <a routerLink="/"><button class="button">Back</button></a>
         <a routerLink="/profile/update"><button class="button">Update Info</button></a>
         <a routerLink="/profile/password"><button class="button">Change Password</button></a>
         <button class="button" *ngIf="user.child != null || user.parent != null" (click)="leave()">Leave Genus</button>
-    </div>
+    </span>
     <div *ngIf="this.user$.value.parent else child">
         <div class="from_all_details">
             <p class="text">{{user.firstName}} 

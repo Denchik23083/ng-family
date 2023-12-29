@@ -50,6 +50,10 @@ import { UserToAdminPageComponent } from './pages/user/user-to-admin-page/user-t
 import { AdminToUserPageComponent } from './pages/user/admin-to-user-page/admin-to-user-page.component';
 import { AdminService } from './services/users/admin.service';
 import { GodService } from './services/users/god.service';
+import { GenusAddParentComponent } from './components/web/genus/genus-add-parent/genus-add-parent.component';
+import { GenusAddChildComponent } from './components/web/genus/genus-add-child/genus-add-child.component';
+import { GenusAddParentPageComponent } from './pages/web/genus/genus-add-parent-page/genus-add-parent-page.component';
+import { GenusAddChildPageComponent } from './pages/web/genus/genus-add-child-page/genus-add-child-page.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +94,10 @@ import { GodService } from './services/users/god.service';
     DeleteUserPageComponent,
     UserToAdminPageComponent,
     AdminToUserPageComponent,
+    GenusAddParentComponent,
+    GenusAddChildComponent,
+    GenusAddParentPageComponent,
+    GenusAddChildPageComponent,
   ],
   imports: [
     BrowserModule,

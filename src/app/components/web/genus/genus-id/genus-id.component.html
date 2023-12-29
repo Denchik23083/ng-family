@@ -1,7 +1,9 @@
 <div *ngIf="genus$ | async as genus" class="main p-3">
-    <span *ngIf="user$ | async as user">
+    <span *ngIf="user$ | async as user" class="mb-2">
         <a routerLink="/genus"><button class="button">Back</button></a>
         <span *ngIf="hasAdminPermission || hasGodPermission || user.parent.genusId == genus.id">
+            <a [routerLink]="['/genus', genus.id, 'addparent']"><button class="button">Add Parent</button></a>
+            <a [routerLink]="['/genus', genus.id, 'addchild']"><button class="button">Add Child</button></a>
             <a [routerLink]="['/genus', genus.id, 'update']"><button class="button">Update</button></a>
             <button class="button" (click)="deleteGenus(genus.id)">Delete</button>
         </span>
