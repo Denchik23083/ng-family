@@ -1,6 +1,6 @@
 <div class="main p-3">
-    <div *ngIf="hasPermissions">   
-        <div class="from_all_details">
+    <div *ngIf="user$ | async as user">   
+        <div *ngIf="user.parent == null && user.child" class="from_all_details">
             <span class="text">Welcome user!</span>
             <a routerLink="/genus/add"><button class="create">Create Genus</button></a>
         </div> 

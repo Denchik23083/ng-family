@@ -1,11 +1,14 @@
-<div *ngIf="genus$ | async as genus" class="main p-3">
-    <a [routerLink]="['/genus', genus.id]"><button class="button mb-2">Back</button></a>
-    <div>
-        <form #form="ngForm" (ngSubmit)="submit(form)">
-            <select [(ngModel)] = 'youth.userId' name="userId" class="form-control input">
-                <option *ngFor="let youth of youths" [ngValue]="youth.id">{{ youth.firstName }}</option>
-            </select><br />
-            <button type='submit' class="form-control button2">Add Child</button><br />
-        </form>
+<div class="main p-3">
+    <div *ngIf="genus$ | async as genus">
+        <a [routerLink]="['/genus', genus.id]"><button class="button mb-2">Back</button></a>
+        <div>
+            <form #form="ngForm" (ngSubmit)="submit(form)">
+                <select [(ngModel)] = 'youth.userId' name="userId" class="form-control input">
+                    <option *ngFor="let youth of youths" [ngValue]="youth.id">{{ youth.firstName }}</option>
+                </select><br />
+                <button type='submit' class="form-control button2">Add Child</button><br />
+            </form>
+        </div>
     </div>
 </div>
+
