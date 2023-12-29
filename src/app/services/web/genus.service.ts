@@ -62,6 +62,20 @@ export class GenusService {
       );
   }
 
+  addParent(model: ParentWriteModel, id: number) {
+    return this.http.put<{}>(`${this.apiLink}/parent/${id}`, model)
+      .pipe(
+        tap(() => this.router.navigate(['/genus']))
+      );
+  }
+
+  addChild(model: ChildWriteModel, id: number) {
+    return this.http.put<{}>(`${this.apiLink}/child/${id}`, model)
+      .pipe(
+        tap(() => this.router.navigate(['/genus']))
+      );
+  }
+
   updateGenus(model: GenusWriteNameModel, id: number): Observable<{}>{
     const genus: GenusReadNameModel = {
       id: id,

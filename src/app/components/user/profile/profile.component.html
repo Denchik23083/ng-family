@@ -1,45 +1,12 @@
-<div *ngIf="user$ | async as user" class="main p-3"> 
-    <div class="wrapper">
-        <a routerLink="/"><button class="button">Back</button></a>
-        <a routerLink="/profile/update"><button class="button">Update Info</button></a>
-        <a routerLink="/profile/password"><button class="button">Change Password</button></a>
-        <button class="button" *ngIf="user.child != null || user.parent != null" (click)="leave()">Leave Genus</button>
-    </div>
-    <div *ngIf="this.user$.value.parent else child">
-        <div class="from_all_details">
-            <p class="text">{{user.firstName}} 
-                <span *ngIf="user.child != null">
-                    {{user.child.genus.name}}
-                </span>            
-                <span *ngIf="user.parent != null">
-                    {{user.parent.genus.name}}
-                </span>
-            </p>
-            <p class="text">{{user.birthDay | date:'dd.MM.yyyy'}}</p>
-            <p class="text">Parent</p>
-            <p class="text">{{user.gender.type}}</p>
-        </div>
-        <div *ngIf="this.user$.value.parent != null" class="wrapper">
-            <div *ngFor="let item of user.parent.genus.parents">
-                <div class="from_all_click" *ngIf="item != null">                    
-                    <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
-                    <p class="text">Parent</p>
-                    <p class="text">{{item.user.gender.type}}</p>
-                </div>
-            </div>  
-            <div *ngFor="let item of user.parent.genus.children">
-                <div class="from_all_click" *ngIf="item != null">                    
-                    <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
-                    <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
-                    <p class="text">Child</p>
-                    <p class="text">{{item.user.gender.type}}</p>
-                </div>
-            </div> 
-        </div>             
-    </div>
-    <ng-template #child>
-        <div *ngIf="this.user$.value.child else noone">   
+<div class="main p-3">
+    <div *ngIf="user$ | async as user">
+        <span class="mb-2">
+            <a routerLink="/"><button class="button">Back</button></a>
+            <a routerLink="/profile/update"><button class="button">Update Info</button></a>
+            <a routerLink="/profile/password"><button class="button">Change Password</button></a>
+            <button class="button" *ngIf="user.child != null || (user.parent != null && user.parent.genus.parents.length != 1)" (click)="leave()">Leave Genus</button>
+        </span>
+        <div *ngIf="user.parent else child">
             <div class="from_all_details">
                 <p class="text">{{user.firstName}} 
                     <span *ngIf="user.child != null">
@@ -50,37 +17,72 @@
                     </span>
                 </p>
                 <p class="text">{{user.birthDay | date:'dd.MM.yyyy'}}</p>
-                <p class="text">Child</p>
+                <p class="text">Parent</p>
                 <p class="text">{{user.gender.type}}</p>
-            </div>    
-            <div *ngIf="this.user$.value.child != null" class="wrapper">
-                <div *ngFor="let item of user.child.genus.parents">
-                    <div class="from_all_click" *ngIf="item != null">                
-                        <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
+            </div>
+            <div *ngIf="user.parent != null" class="wrapper">
+                <div *ngFor="let item of user.parent.genus.parents">
+                    <div class="from_all_click" *ngIf="item != null">                    
+                        <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
                         <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                         <p class="text">Parent</p>
                         <p class="text">{{item.user.gender.type}}</p>
                     </div>
-                </div>   
-                <div *ngFor="let item of user.child.genus.children">
-                    <div class="from_all_click" *ngIf="item != null">                
-                        <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
+                </div>  
+                <div *ngFor="let item of user.parent.genus.children">
+                    <div class="from_all_click" *ngIf="item != null">                    
+                        <p class="text">{{item.user.firstName}} {{user.parent.genus.name}}</p>
                         <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
                         <p class="text">Child</p>
                         <p class="text">{{item.user.gender.type}}</p>
                     </div>
-                </div>   
-            </div>       
+                </div> 
+            </div>             
         </div>
-    </ng-template>
-    <ng-template #noone>
-        <div>
-            <div class="from_all_details">
-                <p class="text">{{user.firstName}}</p>
-                <p class="text">{{user.birthDay | date:'dd.MM.yyyy'}}</p>
-                <p class="text">{{user.gender.type}}</p>
+        <ng-template #child>
+            <div *ngIf="user.child else noone">   
+                <div class="from_all_details">
+                    <p class="text">{{user.firstName}} 
+                        <span *ngIf="user.child != null">
+                            {{user.child.genus.name}}
+                        </span>            
+                        <span *ngIf="user.parent != null">
+                            {{user.parent.genus.name}}
+                        </span>
+                    </p>
+                    <p class="text">{{user.birthDay | date:'dd.MM.yyyy'}}</p>
+                    <p class="text">Child</p>
+                    <p class="text">{{user.gender.type}}</p>
+                </div>    
+                <div *ngIf="user.child != null" class="wrapper">
+                    <div *ngFor="let item of user.child.genus.parents">
+                        <div class="from_all_click" *ngIf="item != null">                
+                            <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
+                            <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
+                            <p class="text">Parent</p>
+                            <p class="text">{{item.user.gender.type}}</p>
+                        </div>
+                    </div>   
+                    <div *ngFor="let item of user.child.genus.children">
+                        <div class="from_all_click" *ngIf="item != null">                
+                            <p class="text">{{item.user.firstName}} {{user.child.genus.name}}</p>
+                            <p class="text">{{item.user.birthDay | date:'dd.MM.yyyy'}}</p>
+                            <p class="text">Child</p>
+                            <p class="text">{{item.user.gender.type}}</p>
+                        </div>
+                    </div>   
+                </div>       
             </div>
-        </div>        
-    </ng-template>
+        </ng-template>
+        <ng-template #noone>
+            <div>
+                <div class="from_all_details">
+                    <p class="text">{{user.firstName}}</p>
+                    <p class="text">{{user.birthDay | date:'dd.MM.yyyy'}}</p>
+                    <p class="text">{{user.gender.type}}</p>
+                </div>
+            </div>        
+        </ng-template>
+    </div>
 </div>
 

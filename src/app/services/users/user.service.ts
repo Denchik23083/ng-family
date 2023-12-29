@@ -116,7 +116,7 @@ export class UserService {
 
   logout(): void {
     this.clearData();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   clearData(): void {
